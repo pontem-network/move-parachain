@@ -4,6 +4,7 @@ members = [
 	"pallets/parachain-info",
 	"pallets/token-dealer",
 	"pallets/template",
+	"pallets/sp-mvm",
 	"node/",
 ]
 

@@ -39,6 +39,9 @@ pub use template;
 /// Import the message pallet.
 pub use cumulus_token_dealer;
 
+/// Move VM pallet.
+pub use sp_mvm;
+
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -184,6 +187,10 @@ impl pallet_timestamp::Trait for Runtime {
 	type WeightInfo = ();
 }
 
+impl sp_mvm::Trait for Runtime {
+    type Event = Event;
+}
+
 parameter_types! {
 	pub const ExistentialDeposit: u128 = 500;
 	pub const TransferFee: u128 = 0;
@@ -261,6 +268,7 @@ construct_runtime! {
 		ParachainInfo: parachain_info::{Module, Storage, Config},
 		TokenDealer: cumulus_token_dealer::{Module, Call, Event<T>},
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
+		Mvm: sp_mvm::{Module, Call, Storage, Event<T>},
 	}
 }
 

@@ -1,0 +1,88 @@
+[package]
+authors = ['Substrate DevHub <https://github.com/substrate-developer-hub>']
+description = 'FRAME pallet template for defining custom runtime logic.'
+edition = '2018'
+homepage = 'https://substrate.dev'
+license = 'Unlicense'
+name = 'sp-mvm'
+repository = 'https://github.com/substrate-developer-hub/substrate-mv-node/'
+version = '0.1.1'
+
+#[patch.crates-io]
+#sp-io = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+
+
+[package.metadata.docs.rs]
+targets = ['x86_64-unknown-linux-gnu']
+
+[dependencies.log]
+version = "0.4"
+default-features = false
+
+[dependencies.codec]
+default-features = false
+features = ['derive']
+package = 'parity-scale-codec'
+version = '1.3.4'
+
+[dependencies.move-vm]
+package = "mvm"
+git = "https://github.com/dfinance/sp-move-vm.git"
+branch = "bp-tst"
+default-features = false
+
+
+#[patch.crates-io]
+#mvm = { path = "/Volumes/boris-backup/Users/boris/Documents/sp-move-vm-1" }
+
+[dependencies]
+frame-support = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+frame-system = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+
+# Move, addition deps for addrs & results:
+vm = { git = "https://github.com/dfinance/sp-move-vm.git", branch = "bp-tst", default-features = false }
+move-vm-runtime = { git = "https://github.com/dfinance/sp-move-vm.git", branch = "bp-tst", default-features = false }
+move-core-types = { git = "https://github.com/dfinance/sp-move-vm.git", branch = "bp-tst", default-features = false }
+move-vm-types = { git = "https://github.com/dfinance/sp-move-vm.git", branch = "bp-tst", default-features = false }
+
+# corelib, std, structs:
+sp-std = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+sp-core = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+#sp-io = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+
+# for logging, `sp_runtime::print`:
+sp-runtime = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+# sp-io = { default-features = false, version = '2.0.0' }
+
+
+[dev-dependencies]
+sp-core = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+sp-io = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+sp-runtime = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "rococo-branch" }
+# serde is for lcs only
+serde = { version = "1", default-features = false, package = "alt_serde", features = ["derive", "alloc"] }
+
+[dev-dependencies.lcs]
+package = "libra-canonical-serialization"
+default-features = false
+git = "https://github.com/dfinance/sp-move-vm.git"
+branch = "master"
+
+[features]
+default = ['std']
+std = [
+    "log/std",
+    # "once_cell/std",
+    "vm/std",
+    "move-vm/std",
+    "move-vm-runtime/std",
+    "move-core-types/std",
+    "lcs/std",
+    "serde/std",
+    "sp-std/std",
+    "sp-core/std",
+    "sp-runtime/std",
+    "codec/std",
+    "frame-support/std",
+    "frame-system/std",
+]

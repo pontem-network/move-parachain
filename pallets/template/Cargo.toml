@@ -32,4 +32,5 @@ std = [
     'codec/std',
     'frame-support/std',
     'frame-system/std',
+    'sp-io/std',
 ]
